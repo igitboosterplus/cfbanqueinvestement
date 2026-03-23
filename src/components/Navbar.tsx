@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
-import logoSimple from "@/assets/logo_simple.jpeg";
+import logoComplet from "@/assets/logo_complet.jpeg";
 
 const navItems = [
   {
@@ -101,20 +101,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-[68px]">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 shrink-0">
+          <Link to="/" className="shrink-0">
             <img
-              src={logoSimple}
+              src={logoComplet}
               alt="CF Banque Investment"
-              className="h-10 lg:h-11 w-auto rounded-full"
+              className="h-12 lg:h-14 w-auto"
             />
-            <div className="hidden sm:block">
-              <span className="text-primary font-serif text-lg font-bold tracking-wide leading-none">
-                CF BANQUE
-              </span>
-              <span className="text-accent font-sans text-[10px] block tracking-[0.2em] uppercase">
-                Investment
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Nav — JPMorgan clean style */}

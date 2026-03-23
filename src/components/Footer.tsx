@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Facebook, Instagram, Youtube } from "lucide-react";
-import logoSimple from "@/assets/logo_simple.jpeg";
+import logoComplet from "@/assets/logo_complet.jpeg";
 
 const footerColumns = [
   {
@@ -78,20 +78,12 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-14 pb-10">
       {/* Logo + social row */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 pb-8 border-b border-white/10">
-        <Link to="/" className="flex items-center gap-3 mb-6 sm:mb-0">
+        <Link to="/" className="mb-6 sm:mb-0">
           <img
-            src={logoSimple}
+            src={logoComplet}
             alt="CF Banque Investment"
-            className="h-10 w-auto rounded-full"
+            className="h-14 w-auto brightness-0 invert"
           />
-          <div>
-            <span className="text-white font-serif text-lg font-bold tracking-wide leading-none">
-              CF BANQUE
-            </span>
-            <span className="text-white/40 font-sans text-[10px] block tracking-[0.2em] uppercase">
-              Investment
-            </span>
-          </div>
         </Link>
         <div className="flex items-center gap-4">
           {socialLinks.map((s) => (
