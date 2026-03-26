@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 // Lazy-load all other pages for code splitting
 const About = lazy(() => import("./pages/About"));
 const Leadership = lazy(() => import("./pages/Leadership"));
+const LeadershipProfile = lazy(() => import("./pages/LeadershipProfile"));
 const Governance = lazy(() => import("./pages/Governance"));
 const History = lazy(() => import("./pages/History"));
 const Technology = lazy(() => import("./pages/Technology"));
@@ -59,6 +60,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/leadership" element={<Leadership />} />
+          <Route path="/leadership/:slug" element={<LeadershipProfile />} />
           <Route path="/governance" element={<Governance />} />
           <Route path="/history" element={<History />} />
           <Route path="/technology" element={<Technology />} />
