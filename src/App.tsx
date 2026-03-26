@@ -35,6 +35,7 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Cookies = lazy(() => import("./pages/Cookies"));
 const Accessibility = lazy(() => import("./pages/Accessibility"));
+const ChairmanLetter = lazy(() => import("./pages/ChairmanLetter"));
 const LegalNotices = lazy(() => import("./pages/LegalNotices"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -62,6 +63,7 @@ const App = () => (
           <Route path="/history" element={<History />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/diversity" element={<Diversity />} />
+          <Route path="/chairman-letter" element={<ChairmanLetter />} />
           <Route path="/investment-banking" element={<InvestmentBanking />} />
           <Route path="/asset-management" element={<AssetManagement />} />
           <Route path="/wealth-management" element={<WealthManagement />} />

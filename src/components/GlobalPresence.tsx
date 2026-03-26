@@ -2,15 +2,16 @@ import { motion } from "framer-motion";
 import { Globe, MapPin } from "lucide-react";
 
 const countries = [
-  { name: "France", pos: "top-[18%] left-[48%]" },
-  { name: "Switzerland", pos: "top-[22%] left-[52%]" },
-  { name: "Ivory Coast", pos: "top-[48%] left-[42%]" },
-  { name: "Senegal", pos: "top-[40%] left-[36%]" },
-  { name: "Cameroon", pos: "top-[52%] left-[50%]" },
-  { name: "Congo", pos: "top-[58%] left-[52%]" },
-  { name: "Gabon", pos: "top-[55%] left-[48%]" },
-  { name: "UAE", pos: "top-[35%] left-[65%]" },
-  { name: "Morocco", pos: "top-[32%] left-[42%]" },
+  { name: "United Kingdom", flagCode: "gb", pos: "top-[18%] left-[46%]" },
+  { name: "USA", flagCode: "us", pos: "top-[25%] left-[22%]" },
+  { name: "India", flagCode: "in", pos: "top-[38%] left-[68%]" },
+  { name: "Panama", flagCode: "pa", pos: "top-[45%] left-[24%]" },
+  { name: "Hong Kong", flagCode: "hk", pos: "top-[35%] left-[78%]" },
+  { name: "Singapore", flagCode: "sg", pos: "top-[50%] left-[74%]" },
+  { name: "Senegal", flagCode: "sn", pos: "top-[42%] left-[38%]" },
+  { name: "Cameroon", flagCode: "cm", pos: "top-[50%] left-[50%]" },
+  { name: "Congo", flagCode: "cg", pos: "top-[56%] left-[52%]" },
+  { name: "Gabon", flagCode: "ga", pos: "top-[53%] left-[48%]" },
 ];
 
 const capabilities = [
@@ -50,7 +51,15 @@ const GlobalPresence = () => (
                 key={c.name}
                 className="inline-flex items-center gap-1.5 bg-white/[0.08] text-white/60 text-xs font-medium px-3 py-1.5"
               >
-                <MapPin className="w-3 h-3 text-white/40" />
+                <img
+                  src={`https://flagcdn.com/w20/${c.flagCode}.png`}
+                  srcSet={`https://flagcdn.com/w40/${c.flagCode}.png 2x`}
+                  width="16"
+                  height="12"
+                  alt=""
+                  className="inline-block rounded-sm object-cover"
+                  loading="lazy"
+                />
                 {c.name}
               </span>
             ))}
@@ -86,7 +95,8 @@ const GlobalPresence = () => (
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 3, repeat: Infinity, delay: i * 0.25 }}
                 />
-                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white text-primary text-[11px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white text-primary text-[11px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center gap-1">
+                  <img src={`https://flagcdn.com/w20/${c.flagCode}.png`} width="14" height="10" alt="" className="inline-block rounded-sm" loading="lazy" />
                   {c.name}
                 </span>
               </motion.div>

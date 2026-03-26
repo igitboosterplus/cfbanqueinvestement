@@ -26,6 +26,7 @@ const footerColumns = [
       { label: "History", path: aboutRoutes.history },
       { label: "Technology", path: aboutRoutes.technology },
       { label: "Diversity & Inclusion", path: aboutRoutes.diversity },
+      { label: "Letter of the Chairman", path: aboutRoutes.chairmanLetter },
       { label: "Newsroom", path: newsroomRoutes.overview },
       { label: "Investor Relations", path: investorRelationsRoutes.overview },
       { label: "Careers", path: "/careers" },

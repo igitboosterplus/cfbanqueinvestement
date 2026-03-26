@@ -12,6 +12,7 @@ import { contactSchema } from "@/lib/contactSchema";
 const headquarters = {
   city: "London",
   country: "United Kingdom",
+  flagCode: "gb",
   type: "Head Office",
   address: "25 Cabot Square, Canary Wharf, London E14 4QZ",
   phones: ["+44 20 3962 5751"],
@@ -22,30 +23,35 @@ const globalOffices = [
   {
     city: "New York",
     country: "USA",
+    flagCode: "us",
     address: "One World Trade Center, 285 Fulton Street, New York, NY 10007",
     phones: ["+1 (212) 970-4100", "+1 (212) 661-5200"],
   },
   {
     city: "Mumbai",
     country: "India",
+    flagCode: "in",
     address: "Maker Chambers IV, Nariman Point, Mumbai 400021",
     phones: ["+91 22 6632 7300", "+91 22 6638 3600"],
   },
   {
     city: "Panama City",
     country: "Panama",
+    flagCode: "pa",
     address: "Ocean Business Plaza, Calle 50, Panama City",
     phones: ["+507 833-7600", "+507 395-2100"],
   },
   {
     city: "Hong Kong",
     country: "China",
+    flagCode: "hk",
     address: "International Finance Centre, 8 Finance Street, Central",
     phones: ["+852 2521 8888", "+852 2842 7600"],
   },
   {
     city: "Singapore",
     country: "Singapore",
+    flagCode: "sg",
     address: "Marina Bay Financial Centre Tower 1, 8 Marina Boulevard, 018981",
     phones: ["+65 6532 8800", "+65 6223 2200"],
   },
@@ -55,6 +61,7 @@ const africanOffices = [
   {
     city: "Dakar",
     country: "Senegal",
+    flagCode: "sn",
     address: "Avenue Léopold Sédar Senghor, Plateau, Dakar",
     phones: ["+221 77 654 32 98"],
     email: "customer@chartered.com",
@@ -62,6 +69,7 @@ const africanOffices = [
   {
     city: "Douala",
     country: "Cameroon",
+    flagCode: "cm",
     address: "Rue Koloko, Quartier Bonapriso, Douala",
     phones: ["+237 6 57 84 32 10"],
     email: "customer@chartered.com",
@@ -69,6 +77,7 @@ const africanOffices = [
   {
     city: "Brazzaville",
     country: "Congo",
+    flagCode: "cg",
     address: "Avenue Amilcar Cabral, Centre-ville, Brazzaville",
     phones: ["+242 06 789 45 21"],
     email: "customer@chartered.com",
@@ -76,16 +85,34 @@ const africanOffices = [
   {
     city: "Libreville",
     country: "Gabon",
+    flagCode: "ga",
     address: "Boulevard Triomphal, Centre-ville, Libreville",
     phones: ["+241 07 82 56 43"],
     email: "customer@chartered.com",
   },
 ];
 
-function OfficeCard({ office }: { office: { city: string; country: string; address: string; phones: string[]; email?: string } }) {
+function CountryFlag({ code, country }: { code: string; country: string }) {
+  return (
+    <img
+      src={`https://flagcdn.com/w40/${code}.png`}
+      srcSet={`https://flagcdn.com/w80/${code}.png 2x`}
+      width="20"
+      height="15"
+      alt={`${country} flag`}
+      className="inline-block rounded-sm object-cover"
+      loading="lazy"
+    />
+  );
+}
+
+function OfficeCard({ office }: { office: { city: string; country: string; flagCode?: string; address: string; phones: string[]; email?: string } }) {
   return (
     <div className="bg-card p-5 border">
-      <h4 className="font-serif text-foreground font-semibold mb-1">{office.city}, {office.country}</h4>
+      <h4 className="font-serif text-foreground font-semibold mb-1 flex items-center gap-2">
+        {office.flagCode && <CountryFlag code={office.flagCode} country={office.country} />}
+        {office.city}, {office.country}
+      </h4>
       <p className="text-muted-foreground text-sm leading-relaxed mb-2">{office.address}</p>
       {office.phones.map((p) => (
         <a key={p} href={`tel:${p.replace(/[\s()-]/g, "")}`} className="block text-muted-foreground text-sm hover:text-primary transition-colors">
@@ -196,7 +223,9 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-serif text-3xl text-foreground font-bold mb-8">Head Office</h2>
+              <h2 className="font-serif text-3xl text-foreground font-bold mb-8 flex items-center gap-3">
+                <CountryFlag code={headquarters.flagCode} country={headquarters.country} /> Head Office
+              </h2>
               <div className="space-y-6 mb-12">
                 <div className="flex items-start gap-4">
                   <MapPin className="w-5 h-5 text-accent mt-1 shrink-0" />

@@ -5,6 +5,7 @@ export const aboutRoutes = {
   history: "/history",
   technology: "/technology",
   diversity: "/diversity",
+  chairmanLetter: "/chairman-letter",
 } as const;
 
 export const aboutSectionLinks = [
@@ -13,6 +14,7 @@ export const aboutSectionLinks = [
   { label: "History", href: aboutRoutes.history },
   { label: "Technology", href: aboutRoutes.technology },
   { label: "Diversity", href: aboutRoutes.diversity },
+  { label: "Letter of the Chairman", href: aboutRoutes.chairmanLetter },
 ] as const;
 
 export const aboutNavChildren = [
@@ -22,4 +24,5 @@ export const aboutNavChildren = [
   { label: "History", path: aboutRoutes.history },
   { label: "Technology", path: aboutRoutes.technology },
   { label: "Diversity & Inclusion", path: aboutRoutes.diversity },
+  { label: "Letter of the Chairman", path: aboutRoutes.chairmanLetter },
 ] as const;
