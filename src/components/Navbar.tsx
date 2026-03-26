@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
 import logoComplet from "@/assets/logo_complet.jpeg";
 import { aboutNavChildren, aboutRoutes } from "@/config/aboutRoutes";
 import { communitiesNavChildren, communitiesRoutes, careersNavChildren, careersRoutes, impactNavChildren, impactRoutes, newsroomNavChildren, newsroomRoutes, investorRelationsNavChildren, investorRelationsRoutes } from "@/config/siteRoutes";
@@ -81,6 +81,18 @@ const Navbar = () => {
       className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-sm" : "bg-white"}`}
       aria-label="Main navigation"
     >
+      {/* Top utility bar */}
+      <div className="hidden lg:block bg-primary">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-end h-7">
+          <Link
+            to="/careers"
+            className="text-primary-foreground/60 hover:text-primary-foreground text-[11px] font-sans transition-colors flex items-center gap-1"
+          >
+            Join Our Team <ExternalLink className="w-2.5 h-2.5" />
+          </Link>
+        </div>
+      </div>
+
       {/* Main navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-[68px]">
