@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
@@ -39,31 +40,39 @@ const reports = [
     title: "2025 Global Investment Outlook",
     category: "Market Research",
     description: "Comprehensive analysis of global investment trends and opportunities for the year ahead.",
+    image: "/images/market-analysis.jpg",
   },
   {
     title: "ESG in Emerging Markets: Challenges & Opportunities",
     category: "Sustainability",
     description: "How sustainable investing is reshaping capital flows in frontier and emerging markets.",
+    image: "/images/esg-commitment.jpg",
   },
   {
     title: "The Future of Cross-Border Finance in Africa",
     category: "Regional Analysis",
     description: "A deep dive into financial integration, regulatory harmonization and investment opportunities across the continent.",
+    image: "/images/global-trading.jpg",
   },
 ];
 
 const Institute = () => (
   <PageTransition>
   <div className="min-h-screen">
+    <SEO title="Institute" description="Research, data-driven analysis and thought leadership informing strategic decision-making across global markets — CF Banque Investment Institute." path="/institute" />
     <Navbar />
     <PageHero
       tag="Institute"
       title="CF BANQUE Investment Institute"
       description="Our research institute delivers original insights, data-driven analysis and thought leadership to inform strategic decision-making across global markets."
       image="/images/institute-hero.jpg"
+      anchors={[
+        { label: "Research", href: "#research-areas" },
+        { label: "Publications", href: "#publications" },
+      ]}
     />
 
-    <section className="py-20 lg:py-28 bg-white">
+    <section id="research-areas" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,7 +96,7 @@ const Institute = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-[#f7f7f7] p-8 lg:p-10"
+              className="bg-muted p-8 lg:p-10"
             >
               <area.icon className="w-10 h-10 text-accent mb-5" strokeWidth={1.5} />
               <h3 className="font-serif text-xl lg:text-2xl text-foreground font-semibold mb-3">
@@ -102,7 +111,7 @@ const Institute = () => (
       </div>
     </section>
 
-    <section className="py-20 lg:py-28 bg-[#f7f7f7]">
+    <section id="publications" className="py-20 lg:py-28 bg-muted">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -123,8 +132,17 @@ const Institute = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 hover:shadow-lg transition-shadow duration-300"
+              className="bg-white overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={report.image}
+                  alt={report.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-8">
               <span className="text-accent text-xs font-semibold uppercase tracking-wider">
                 {report.category}
               </span>
@@ -134,9 +152,10 @@ const Institute = () => (
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {report.description}
               </p>
-              <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all cursor-pointer">
+              <Link to="/contact" className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all">
                 Read more <ArrowRight className="w-4 h-4" />
-              </span>
+              </Link>
+              </div>
             </motion.article>
           ))}
         </div>

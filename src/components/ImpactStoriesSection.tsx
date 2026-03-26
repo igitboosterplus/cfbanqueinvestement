@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { investorRelationsRoutes } from "@/config/siteRoutes";
 
 const items = [
   {
@@ -15,14 +16,14 @@ const items = [
     title: "2025 Annual Report & Financial Results",
     description:
       "Revenue growth of +18%, $2.4B in AUM and 45+ advisory mandates completed. Read our latest report for a full review of financial performance, strategic initiatives and our outlook.",
-    link: "/investor-relations",
+    link: investorRelationsRoutes.overview,
     linkLabel: "Read the report",
     image: "/images/banner-building-financial-security-and-resilience.png",
   },
 ];
 
 const ImpactStoriesSection = () => (
-  <section className="py-24 lg:py-32 bg-[#f8f8f8]">
+  <section className="py-24 lg:py-32 bg-muted">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {items.map((item, i) => (
@@ -35,12 +36,13 @@ const ImpactStoriesSection = () => (
           >
             <Link
               to={item.link}
-              className="group block relative overflow-hidden min-h-[400px] lg:min-h-[480px] flex flex-col justify-end p-10 lg:p-12 h-full"
+              className="group relative overflow-hidden min-h-[400px] lg:min-h-[480px] flex flex-col justify-end p-10 lg:p-12 h-full"
             >
               <img
                 src={item.image}
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="relative z-10">

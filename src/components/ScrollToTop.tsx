@@ -3,14 +3,51 @@ import { useLocation } from "react-router-dom";
 import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const SCROLL_OFFSET = 96;
+
+const scrollToAnchor = (hash: string) => {
+  const id = hash.replace(/^#/, "");
+  if (!id) return false;
+
+  const element = document.getElementById(id);
+  if (!element) return false;
+
+  const top = element.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+  window.scrollTo({ top, behavior: "auto" });
+  return true;
+};
+
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const [visible, setVisible] = useState(false);
 
-  // Scroll to top on route change
+  // Scroll to top on route change, or to the target section when a hash is present.
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+
+    let frame1 = 0;
+    let frame2 = 0;
+
+    const tryScroll = () => {
+      if (scrollToAnchor(hash)) return;
+
+      frame1 = window.requestAnimationFrame(() => {
+        frame2 = window.requestAnimationFrame(() => {
+          scrollToAnchor(hash);
+        });
+      });
+    };
+
+    tryScroll();
+
+    return () => {
+      window.cancelAnimationFrame(frame1);
+      window.cancelAnimationFrame(frame2);
+    };
+  }, [pathname, hash]);
 
   // Show button after scrolling down
   useEffect(() => {

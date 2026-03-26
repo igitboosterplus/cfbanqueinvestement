@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#162a4a"/>
+  <rect y="580" width="1200" height="50" fill="#c87519"/>
+  <text x="600" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#ffffff">CF BANQUE INVESTMENT</text>
+  <text x="600" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="6">GLOBAL FINANCIAL INSTITUTION</text>
+  <line x1="480" y1="360" x2="720" y2="360" stroke="#c87519" stroke-width="2"/>
+  <text x="600" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.5)" letter-spacing="3">INVESTMENT BANKING · CAPITAL MARKETS · ADVISORY</text>
+</svg>

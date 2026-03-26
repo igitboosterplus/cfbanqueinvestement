@@ -48,7 +48,7 @@ const GlobalPresence = () => (
             {countries.map((c) => (
               <span
                 key={c.name}
-                className="inline-flex items-center gap-1.5 bg-white/8 text-white/60 text-xs font-medium px-3 py-1.5"
+                className="inline-flex items-center gap-1.5 bg-white/[0.08] text-white/60 text-xs font-medium px-3 py-1.5"
               >
                 <MapPin className="w-3 h-3 text-white/40" />
                 {c.name}
@@ -69,7 +69,7 @@ const GlobalPresence = () => (
             <div className="absolute inset-6 rounded-full border border-white/[0.07]" />
             <div className="absolute inset-14 rounded-full border border-white/[0.05]" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <Globe className="w-28 h-28 lg:w-36 lg:h-36 text-white/10" strokeWidth={0.5} />
+              <Globe className="w-28 h-28 lg:w-36 lg:h-36 text-white/10" strokeWidth={0.5} aria-hidden="true" />
             </div>
             {/* Country dots with tooltips */}
             {countries.map((c, i) => (

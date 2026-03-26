@@ -1,0 +1,22 @@
+{
+  "name": "CF Banque Investment",
+  "short_name": "CF Banque",
+  "description": "International financial institution specializing in investment banking, capital markets, strategic financial advisory and institutional asset management.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#162a4a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

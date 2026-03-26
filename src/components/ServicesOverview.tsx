@@ -1,81 +1,166 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { TrendingUp, BarChart3, Shield, Landmark, ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { aboutRoutes } from "@/config/aboutRoutes";
 
 const services = [
   {
-    icon: Landmark,
-    title: "Investment Banking",
-    description: "Strategic advisory, M&A, corporate financing, equity and debt capital markets, structured finance and leveraged finance.",
+    tab: "Investment Banking",
+    title: "Strategic Financial Engineering",
+    description:
+      "We design advanced financial structures based on rigorous analysis of balance sheets, cash flows, macroeconomic risks, and long-term corporate strategy. Our objective is to optimize capital structures and strengthen the financial resilience of enterprises.",
+    bullets: [
+      "Capital Structure Optimization",
+      "Debt & Equity Structuring",
+      "Financial Risk Modeling",
+      "M&A Advisory & Execution",
+      "Strategic Financial Planning",
+    ],
+    image: "/images/investment-team.jpg",
     link: "/investment-banking",
   },
   {
-    icon: BarChart3,
-    title: "Asset Management",
-    description: "Multi-asset portfolio management, fixed income expertise, alternative investments and ESG-integrated strategies.",
+    tab: "Asset Management",
+    title: "Multi-Asset Portfolio Solutions",
+    description:
+      "Our asset management platform delivers institutional-grade portfolio management spanning multi-asset strategies, fixed income, alternative investments and ESG-integrated approaches to generate sustainable risk-adjusted returns.",
+    bullets: [
+      "Multi-Asset Portfolio Management",
+      "Fixed Income Expertise",
+      "Alternative Investments",
+      "ESG-Integrated Strategies",
+      "Institutional Advisory",
+    ],
+    image: "/images/client-meeting.jpg",
     link: "/asset-management",
   },
   {
-    icon: TrendingUp,
-    title: "Wealth Management",
-    description: "Comprehensive wealth advisory, private banking, succession planning and bespoke lending solutions for HNWI and UHNWI.",
+    tab: "Wealth Management",
+    title: "Bespoke Wealth Advisory",
+    description:
+      "Comprehensive wealth advisory, private banking, succession planning and bespoke lending solutions designed for high-net-worth and ultra-high-net-worth individuals and families seeking sophisticated financial stewardship.",
+    bullets: [
+      "Private Banking Solutions",
+      "Succession & Estate Planning",
+      "Bespoke Lending",
+      "Tax-Efficient Structuring",
+      "Family Office Services",
+    ],
+    image: "/images/wealth-advisory.jpg",
     link: "/wealth-management",
   },
   {
-    icon: Shield,
-    title: "Risk Management",
-    description: "Advanced derivatives, hedging strategies, interest rate and currency swaps, and structured derivative products.",
-    link: "/about#governance",
+    tab: "Risk Management",
+    title: "Advanced Risk & Governance",
+    description:
+      "Implementation of governance and financial control structures required by global investors and multilateral financial institutions. Advanced derivatives, hedging strategies, and structured derivative products.",
+    bullets: [
+      "Derivatives & Hedging",
+      "Interest Rate & Currency Swaps",
+      "Regulatory Compliance",
+      "Governance Frameworks",
+      "Portfolio Risk Analytics",
+    ],
+    image: "/images/corporate-governance.jpg",
+    link: aboutRoutes.governance,
   },
 ];
 
-const ServicesOverview = () => (
-  <section className="py-20 lg:py-28 bg-background">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="text-accent font-sans text-sm font-semibold tracking-[0.2em] uppercase">
-          Our Expertise
-        </span>
-        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mt-3">
-          Integrated Financial Services
-        </h2>
-        <p className="text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">
-          A comprehensive platform combining advisory, capital markets and asset management capabilities.
-        </p>
-      </motion.div>
+const ServicesOverview = () => {
+  const [active, setActive] = useState(0);
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {services.map((service, i) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-          >
-            <Link
-              to={service.link}
-              className="group block bg-card border rounded-lg p-8 lg:p-10 hover:shadow-lg hover:border-accent/30 transition-all duration-300 h-full"
+  return (
+    <section className="py-24 lg:py-32 bg-muted">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <span className="text-accent font-sans text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
+            Investment Banking
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold">
+            What We Do
+          </h2>
+        </motion.div>
+
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {services.map((s, i) => (
+            <button
+              key={s.tab}
+              onClick={() => setActive(i)}
+              className={`px-6 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 ${
+                active === i
+                  ? "bg-accent text-white shadow-lg shadow-accent/20"
+                  : "bg-white text-foreground/60 hover:text-primary hover:shadow-md"
+              }`}
             >
-              <service.icon className="w-10 h-10 text-accent mb-5" strokeWidth={1.5} />
-              <h3 className="font-serif text-xl lg:text-2xl text-card-foreground font-semibold mb-3">
-                {service.title}
+              {s.tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
+            {/* Image */}
+            <div className="overflow-hidden shadow-xl">
+              <img
+                src={services[active].image}
+                alt={services[active].title}
+                className="w-full h-[400px] lg:h-[500px] object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Content */}
+            <div>
+              <h3 className="font-serif text-2xl lg:text-3xl text-foreground font-bold mb-4">
+                {services[active].title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-5">{service.description}</p>
-              <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider group-hover:gap-3 transition-all">
-                Learn More <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                {services[active].description}
+              </p>
+              <ul className="space-y-3 mb-8">
+                {services[active].bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                    <span className="text-foreground/80">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  to={services[active].link}
+                  className="inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-orange-light text-white font-semibold text-sm tracking-[0.15em] uppercase transition-all duration-300"
+                >
+                  Explore the Service <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+                <Link
+                  to="/investment-banking"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/20 hover:border-primary text-primary font-semibold text-sm tracking-[0.15em] uppercase transition-all duration-300"
+                >
+                  Explore More Services
+                </Link>
+              </div>
+            </div>
           </motion.div>
-        ))}
+        </AnimatePresence>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ServicesOverview;

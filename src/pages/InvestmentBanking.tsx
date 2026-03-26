@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
@@ -75,18 +76,26 @@ const hedgeFundStrategies = [
 const InvestmentBanking = () => (
   <PageTransition>
   <div className="min-h-screen">
+    <SEO title="Investment Banking" description="Strategic advisory, M&A execution and capital markets solutions for corporations, institutions and sovereign entities — CF Banque Investment." path="/investment-banking" />
     <Navbar />
     <PageHero
       tag="Investment Banking"
       title="Strategic Advisory & Transaction Execution"
       description="Providing corporations, financial institutions, governments and institutional investors with sophisticated financial advisory services and access to global capital markets."
       image="/images/banner-baltimore-skyline.jpg"
+      anchors={[
+        { label: "M&A", href: "#ma" },
+        { label: "Corporate Finance", href: "#finance" },
+        { label: "Capital Markets", href: "#capital-markets" },
+        { label: "Strategies", href: "#strategies" },
+        { label: "Alternatives", href: "#alternatives" },
+      ]}
     />
 
     {/* Core Services */}
     {coreServices.map((section, i) => (
       <section key={section.id} id={section.id} className={`py-20 ${i % 2 === 0 ? "bg-background" : "bg-muted"}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div>
@@ -95,7 +104,7 @@ const InvestmentBanking = () => (
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {section.items.map((item) => (
-                  <div key={item} className="flex items-start gap-3 bg-card border rounded-lg p-4">
+                  <div key={item} className="flex items-start gap-3 bg-card border p-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                     <span className="text-foreground text-sm">{item}</span>
                   </div>
@@ -108,10 +117,10 @@ const InvestmentBanking = () => (
     ))}
 
     {/* Global Investment Strategies */}
-    <section id="strategies" className="py-20 bg-[hsl(220,60%,22%)] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="strategies" className="py-20 bg-primary text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="text-[hsl(42,85%,55%)] font-sans text-sm font-semibold tracking-[0.2em] uppercase">Strategy</span>
+          <span className="text-accent font-sans text-sm font-semibold tracking-[0.2em] uppercase">Strategy</span>
           <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold mt-3">Global Investment Strategies</h2>
           <p className="text-white/75 mt-4 max-w-3xl mx-auto leading-relaxed">
             Designed to respond to the evolving dynamics of international financial markets while maintaining a disciplined focus on long-term value creation and risk-adjusted performance. Investment strategy development is overseen by the firm's Global Investment Committee — a multidisciplinary body composed of economists, portfolio managers, quantitative analysts and sector specialists.
@@ -119,8 +128,8 @@ const InvestmentBanking = () => (
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {strategyPerspectives.map((item, i) => (
-            <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white/5 backdrop-blur-sm rounded-lg p-7 border border-white/10">
-              <item.icon className="w-9 h-9 text-[hsl(42,85%,55%)] mb-4" strokeWidth={1.5} />
+            <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white/5 backdrop-blur-sm p-7 border border-white/10">
+              <item.icon className="w-9 h-9 text-accent mb-4" strokeWidth={1.5} />
               <h3 className="font-serif text-xl text-white font-semibold mb-3">{item.title}</h3>
               <p className="text-white/75 text-sm leading-relaxed">{item.text}</p>
             </motion.div>
@@ -134,7 +143,7 @@ const InvestmentBanking = () => (
 
     {/* Alternative Investments */}
     <section id="alternatives" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
           <span className="text-accent font-sans text-sm font-semibold tracking-[0.2em] uppercase">Diversification</span>
           <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-bold mt-3 mb-4">Alternative Investments</h2>
@@ -145,7 +154,7 @@ const InvestmentBanking = () => (
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Private Equity */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-card border rounded-lg overflow-hidden">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-card border overflow-hidden">
             <div className="bg-accent/10 p-6">
               <Building2 className="w-10 h-10 text-accent mb-3" strokeWidth={1.5} />
               <h3 className="font-serif text-2xl text-foreground font-bold">Private Equity</h3>
@@ -166,7 +175,7 @@ const InvestmentBanking = () => (
           </motion.div>
 
           {/* Infrastructure & Real Assets */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-card border rounded-lg overflow-hidden">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-card border overflow-hidden">
             <div className="bg-accent/10 p-6">
               <Factory className="w-10 h-10 text-accent mb-3" strokeWidth={1.5} />
               <h3 className="font-serif text-2xl text-foreground font-bold">Infrastructure & Real Assets</h3>
@@ -187,7 +196,7 @@ const InvestmentBanking = () => (
           </motion.div>
 
           {/* Hedge Funds */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-card border rounded-lg overflow-hidden">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-card border overflow-hidden">
             <div className="bg-accent/10 p-6">
               <ArrowRightLeft className="w-10 h-10 text-accent mb-3" strokeWidth={1.5} />
               <h3 className="font-serif text-2xl text-foreground font-bold">Hedge Funds & Absolute Return</h3>

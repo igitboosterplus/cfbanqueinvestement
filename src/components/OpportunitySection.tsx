@@ -22,7 +22,7 @@ const cards = [
 ];
 
 const OpportunitySection = () => (
-  <section className="py-24 lg:py-32 bg-[#f8f8f8]">
+  <section className="py-24 lg:py-32 bg-muted">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -58,6 +58,7 @@ const OpportunitySection = () => (
                   src={card.image}
                   alt={card.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
               </div>
               <div className="p-8 lg:p-10">

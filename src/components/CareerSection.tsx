@@ -16,8 +16,9 @@ const CareerSection = () => (
         >
           <img
             src="/images/about-us-hero.png"
-            alt="CF Banque Investment team"
+            alt="CF Banque Investment team collaborating in modern office"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </motion.div>
 

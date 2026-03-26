@@ -1,9 +1,11 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Shield, Users, Globe, Landmark, Key, CreditCard, Building2, Briefcase, Lock, UserCheck } from "lucide-react";
 
 const wealthServices = [
@@ -25,17 +27,24 @@ const lendingSolutions = [
 const WealthManagement = () => (
   <PageTransition>
   <div className="min-h-screen">
+    <SEO title="Wealth Management" description="Comprehensive private wealth advisory platform designed to preserve and grow capital with bespoke investment and estate planning — CF Banque Investment." path="/wealth-management" />
     <Navbar />
     <PageHero
       tag="Wealth Management"
       title="Preserving & Growing Private Capital"
       description="A comprehensive wealth advisory platform designed to preserve and grow private capital while ensuring legal security and intergenerational continuity."
       image="/images/wealth-hero.jpg"
+      anchors={[
+        { label: "Overview", href: "#wealth-overview" },
+        { label: "Advisory", href: "#wealth-services" },
+        { label: "Private Banking", href: "#wealth-private-banking" },
+        { label: "Advisor", href: "#wealth-contact" },
+      ]}
     />
 
     {/* Wealth Management Overview */}
-    <section className="py-20 bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="wealth-overview" className="py-20 bg-background">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
             The Wealth Management division of CFBANQUE INVESTMENT has been established to serve the complex financial needs of high-net-worth individuals (HNWI) and ultra-high-net-worth individuals (UHNWI) operating across multiple jurisdictions. In an increasingly interconnected global financial environment, wealth management requires far more than simple portfolio allocation. It demands a sophisticated combination of investment advisory, legal structuring, tax optimization and long-term strategic planning.
@@ -51,8 +60,8 @@ const WealthManagement = () => (
     </section>
 
     {/* Integrated Advisory Services */}
-    <section className="py-20 bg-muted">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="wealth-services" className="py-20 bg-muted">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <span className="text-accent font-sans text-sm font-semibold tracking-[0.2em] uppercase">Advisory Services</span>
           <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-bold mt-3">Integrated Wealth Advisory</h2>
@@ -62,7 +71,7 @@ const WealthManagement = () => (
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {wealthServices.map((service, i) => (
-            <motion.div key={service.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-lg p-7 border">
+            <motion.div key={service.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card p-7 border">
               <service.icon className="w-9 h-9 text-accent mb-4" strokeWidth={1.5} />
               <h3 className="font-serif text-lg text-foreground font-semibold mb-3">{service.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{service.text}</p>
@@ -73,8 +82,8 @@ const WealthManagement = () => (
     </section>
 
     {/* Mission Statement */}
-    <section className="py-16 bg-[hsl(220,60%,22%)] text-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="py-16 bg-primary text-white">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="text-white/90 text-lg leading-relaxed font-light italic">
             "The ultimate objective of the firm's wealth management platform is not merely to generate investment returns but to safeguard family capital over multiple generations while ensuring that wealth structures remain resilient in the face of regulatory, fiscal and economic changes."
@@ -84,8 +93,8 @@ const WealthManagement = () => (
     </section>
 
     {/* Private Banking */}
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="wealth-private-banking" className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -129,7 +138,7 @@ const WealthManagement = () => (
               </p>
               <div className="space-y-4">
                 {lendingSolutions.map((sol) => (
-                  <div key={sol.title} className="bg-muted border rounded-lg p-5">
+                  <div key={sol.title} className="bg-muted border p-5">
                     <div className="flex items-center gap-2 mb-2">
                       <CreditCard className="w-5 h-5 text-accent" strokeWidth={1.5} />
                       <h4 className="font-semibold text-foreground">{sol.title}</h4>
@@ -145,15 +154,15 @@ const WealthManagement = () => (
     </section>
 
     {/* CTA */}
-    <section className="py-16 bg-muted">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="wealth-contact" className="py-16 bg-muted">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <p className="text-muted-foreground leading-relaxed mb-6">
             Through this combination of personalized advisory services and sophisticated financial structuring capabilities, CFBANQUE INVESTMENT's private banking platform seeks to provide a comprehensive financial ecosystem for high-net-worth clients.
           </p>
-          <a href="/contact" className="inline-block bg-accent text-white font-semibold px-8 py-3 rounded-md hover:bg-accent/90 transition-colors">
+          <Link to="/contact" className="inline-block bg-accent text-white font-semibold px-8 py-3 hover:bg-accent/90 transition-colors text-sm tracking-wide">
             Speak With an Advisor
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
