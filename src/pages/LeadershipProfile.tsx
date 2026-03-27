@@ -16,8 +16,9 @@ export default function LeadershipProfile() {
   return (
     <PageTransition>
       <SEO
-        title={`${member.name} — ${member.title} | CFBANQUE INVESTMENT`}
+        title={`${member.name} — ${member.title}`}
         description={`${member.name}, ${member.title} at CFBANQUE INVESTMENT. ${member.shortBio}`}
+        path={`/leadership/${member.slug}`}
       />
       <Navbar />
       <main>

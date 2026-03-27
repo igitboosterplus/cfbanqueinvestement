@@ -121,8 +121,10 @@ export default function ChairmanLetter() {
   return (
     <PageTransition>
       <SEO
-        title="2026 Annual Chairman's Letter | CFBANQUE INVESTMENT"
+        title="2026 Annual Chairman's Letter"
         description="2026 Annual Chairman's Letter from Laurent Bien Legbane, Group Chairman of CFBANQUE INVESTMENT, to partners, investors, government leaders and institutional stakeholders."
+        path="/chairman-letter"
+        keywords="chairman letter, annual letter, CFBANQUE, Laurent Bien Legbane, 2026"
       />
       <Navbar />
       <main>
