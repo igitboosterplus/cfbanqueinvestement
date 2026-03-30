@@ -64,10 +64,10 @@ const CTABanner = () => (
                   Email
                 </div>
                 <a
-                  href="mailto:customer@chartered.com"
+                  href="mailto:customer@cfbanque.com"
                   className="text-sm text-foreground/70 hover:text-accent transition-colors"
                 >
-                  customer@chartered.com
+                  customer@cfbanque.com
                 </a>
               </div>
             </div>

@@ -16,7 +16,7 @@ const headquarters = {
   type: "Head Office",
   address: "25 Cabot Square, Canary Wharf, London E14 4QZ",
   phones: ["+44 20 3962 5751"],
-  email: "customer@chartered.com",
+  email: "customer@cfbanque.com",
 };
 
 const globalOffices = [
@@ -64,7 +64,7 @@ const africanOffices = [
     flagCode: "sn",
     address: "Avenue Léopold Sédar Senghor, Plateau, Dakar",
     phones: ["+221 77 654 32 98"],
-    email: "customer@chartered.com",
+    email: "customer@cfbanque.com",
   },
   {
     city: "Douala",
@@ -72,7 +72,7 @@ const africanOffices = [
     flagCode: "cm",
     address: "Rue Koloko, Quartier Bonapriso, Douala",
     phones: ["+237 6 57 84 32 10"],
-    email: "customer@chartered.com",
+    email: "customer@cfbanque.com",
   },
   {
     city: "Brazzaville",
@@ -80,7 +80,7 @@ const africanOffices = [
     flagCode: "cg",
     address: "Avenue Amilcar Cabral, Centre-ville, Brazzaville",
     phones: ["+242 06 789 45 21"],
-    email: "customer@chartered.com",
+    email: "customer@cfbanque.com",
   },
   {
     city: "Libreville",
@@ -88,7 +88,7 @@ const africanOffices = [
     flagCode: "ga",
     address: "Boulevard Triomphal, Centre-ville, Libreville",
     phones: ["+241 07 82 56 43"],
-    email: "customer@chartered.com",
+    email: "customer@cfbanque.com",
   },
 ];
 
@@ -189,7 +189,7 @@ const Contact = () => {
           "",
           safe.message,
         ].join("\r\n");
-        window.location.href = `mailto:customer@chartered.com?subject=${encodeURIComponent(`Contact Form - ${safe.subject}`)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:customer@cfbanque.com?subject=${encodeURIComponent(`Contact Form - ${safe.subject}`)}&body=${encodeURIComponent(body)}`;
       }
       setSubmitted(true);
       form.reset();
